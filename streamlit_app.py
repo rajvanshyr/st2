@@ -29,7 +29,11 @@ genres_selection = st.multiselect('Select genres', niche_list, ['Growth', 'Crypt
 year_list = df.year.unique()
 txt1 = st.text_area(
     "Original tweet",
-    "Write wahat you want up here",)
+    "Write What you want up here",)
+
+txt2 = st.text_area(
+    "What are you looking to improve?",
+    "Write What you want up here",)
 
 year_selection = st.slider('Select year temp', 0.0, 1.0,.5)
 year_selection_list = list(np.arange(year_selection[0], year_selection[1]+1))
