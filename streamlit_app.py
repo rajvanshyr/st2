@@ -33,7 +33,8 @@ df_selection = df[df.genre.isin(genres_selection) & df['year'].isin(year_selecti
 reshaped_df = df_selection.pivot_table(index='year', columns='genre', values='gross', aggfunc='sum', fill_value=0)
 reshaped_df = reshaped_df.sort_values(by='year', ascending=False)
 
-
+title = st.text_input('Movie title', 'Life of Brian')
+st.write('The current movie title is', title)
 # Display DataFrame
 
 df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
