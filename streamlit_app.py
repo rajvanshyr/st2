@@ -27,7 +27,7 @@ genres_selection = st.multiselect('Select genres', niche_list, ['Growth', 'Crypt
 
 ## Year selection
 year_list = df.year.unique()
-year_selection = st.slider('Select year temp', 0, 1)
+year_selection = st.slider('Select year temp', 0.0, 1.0,.5)
 year_selection_list = list(np.arange(year_selection[0], year_selection[1]+1))
 
 df_selection = df[df.genre.isin(genres_selection) & df['year'].isin(year_selection_list)]
