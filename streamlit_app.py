@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
+import streamlit.components.v1 as components
 
 # Page title
 st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
@@ -36,6 +37,14 @@ txt2 = st.text_area(
     "Write What you want up here",)
 
 year_selection = st.slider('Select year temp', 0.0, 1.0,.5)
+components.html(
+    """
+  <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet">
+Tweet</a>
+    """, height=600,
+    )
+
 year_selection_list = list(np.arange(year_selection[0], year_selection[1]+1))
 
 df_selection = df[df.genre.isin(genres_selection) & df['year'].isin(year_selection_list)]
