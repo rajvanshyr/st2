@@ -40,9 +40,21 @@ year_selection = st.slider('Select year temp', 0.0, 1.0,.5)
 components.html(
     """
 
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world">
-Tweet</a>
+<title>Twitter Post</title>
+</head>
+<body>
+
+<!-- Button to post to Twitter -->
+<button id="twitterPostBtn">Post to Twitter</button>
+
+<!-- Script to handle the button click and redirect to Twitter -->
+<script>
+    document.getElementById('twitterPostBtn').addEventListener('click', function() {
+        var tweetContent = "{{ tweet_content }}"; // Content generated in the Flask app
+        var twitterUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetContent);
+        window.open(twitterUrl, '_blank');
+    });
+</script>
     """, height=600,
     )
 
