@@ -39,8 +39,9 @@ txt2 = st.text_area(
 year_selection = st.slider('Select year temp', 0.0, 1.0,.5)
 components.html(
     """
-  <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet">
+
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world">
 Tweet</a>
     """, height=600,
     )
