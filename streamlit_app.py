@@ -13,6 +13,9 @@ client = anthropic.Anthropic(
 st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
 st.title('📊 Interactive Data Explorer ayyy2')
 
+with st.sidebar:
+    anthropic_api_key = st.text_input("Openai API Key", key="file_qa_api_key", type="password")
+
 with st.expander('About this app'):
   st.markdown('**What can this app do?**')
   st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
