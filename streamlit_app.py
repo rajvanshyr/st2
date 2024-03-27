@@ -5,6 +5,7 @@ import altair as alt
 import streamlit.components.v1 as components
 
 # Page title
+k="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"
 st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
 st.title('📊 Interactive Data Explorer ayyy2')
 
