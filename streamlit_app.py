@@ -94,7 +94,7 @@ components.html(
 <!-- Script to handle the button click and redirect to Twitter -->
 <script>
 		document.getElementById('twitterPostBtn').addEventListener('click', function() {
-				var tweetContent = "{{ ux }}"; // Content generated in the Flask app
+				var tweetContent = {{ux}}  ; // Content generated in the Flask app
 				var twitterUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetContent);
 				window.open(twitterUrl, '_blank');
 		});
