@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 import streamlit.components.v1 as components
+import anthropic
 
 # Page title
 client = anthropic.Anthropic(
