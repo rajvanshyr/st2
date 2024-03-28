@@ -79,8 +79,8 @@ if st.button('Generate') and anthropic_api_key:
 								}, 
 		],
 		)
-
-	st.markdown("reponse:" + str(message.content))
+	ux=str(message.content)
+	st.markdown("reponse:" + str(ux))
 components.html(
 		"""
 
@@ -94,7 +94,7 @@ components.html(
 <!-- Script to handle the button click and redirect to Twitter -->
 <script>
 		document.getElementById('twitterPostBtn').addEventListener('click', function() {
-				var tweetContent = "{{ tweet_content }}"; // Content generated in the Flask app
+				var tweetContent = "{{ ux }}"; // Content generated in the Flask app
 				var twitterUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetContent);
 				window.open(twitterUrl, '_blank');
 		});
