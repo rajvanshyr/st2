@@ -57,7 +57,7 @@ if st.button('Generate') and anthropic_api_key:
 		u_prompt=u_prompt+"This is the current tweet: "+txt1
 		if txt2:
 			u_prompt=u_prompt=u_prompt+"This is what the user wants to improve: "+txt2
-st.markdown('Prompt: '+ u_prompt)
+	st.markdown('Prompt: '+ u_prompt)
 	message = client.messages.create(
 		model="claude-3-sonnet-20240229",
 		max_tokens=499,
