@@ -52,11 +52,11 @@ txt2 = st.text_area(
 
 temp_selection = st.slider('Select year temp', 0.0, 1.0,.5)
 if st.button('Generate') and anthropic_api_key:
-	u_prompt = f"Generate a clever tweet appealing to the following Niche: {niche_list}"
+	u_prompt = f"Generate a clever tweet appealing to the following Niche: {genres_selection}"
 	if txt1:
-		u_prompt=u_prompt+"This is the current tweet: "+txt1
+		u_prompt=u_prompt+" This is the current tweet: "+txt1
 		if txt2:
-			u_prompt=u_prompt=u_prompt+"This is what the user wants to improve: "+txt2
+			u_prompt=u_prompt=u_prompt+" This is what the user wants to improve: "+txt2
 	st.markdown('Prompt: '+ u_prompt)
 	message = client.messages.create(
 		model="claude-3-sonnet-20240229",
@@ -69,7 +69,7 @@ if st.button('Generate') and anthropic_api_key:
 						"content": [
 								{
 										"type": "text",
-										"text": "Generate a clever tweet appealing to the following Niche: Crypto"
+										"text": u_prompt
 								},                 # Prefill Claude's response to force JSON output
 						]
 				},                
@@ -79,6 +79,8 @@ if st.button('Generate') and anthropic_api_key:
 								}, 
 		],
 		)
+
+st.markdown("reponse:" + message.content)
 components.html(
 		"""
 
