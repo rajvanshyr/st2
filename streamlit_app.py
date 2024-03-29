@@ -8,8 +8,8 @@ import anthropic
 # Page title
 
 
-st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
-st.title('📊 Interactive Data Explorer ayyy2')
+st.set_page_config(page_title='Generate a Viral tweet', page_icon='📊')
+st.title('Generate a Viral tweet')
 
 with st.sidebar:
 		anthropic_api_key = st.text_input("Anthropic API Key", key="file_qa_api_key", type="password")
@@ -19,10 +19,10 @@ client = anthropic.Anthropic(
 		# defaults to os.environ.get("ANTHROPIC_API_KEY")
 		api_key=anthropic_api_key,
 )
-r="dd"
+#r="dd"
 
 	#r=message.content
-with st.expander('About this app'+str(r)):
+with st.expander('About this app'):
 	st.markdown('**What can this app do?**')
 	st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
 	st.markdown('**How to use the app?**')
@@ -50,7 +50,7 @@ txt2 = st.text_area(
 		"What are you looking to improve?",
 		"Write What you want up here",)
 
-temp_selection = st.slider('Select year temp', 0.0, 1.0,.5)
+temp_selection = st.slider('Select year temp(how crazy the model can be)', 0.0, 1.0,.5)
 if st.button('Generate') and anthropic_api_key:
 	u_prompt = f"Generate a clever tweet appealing to the following Niche: {genres_selection}"
 	if txt1:
@@ -101,3 +101,7 @@ components.html(
 </script>
 		""", height=600,
 		)
+
+else:
+    if not anthropic_api_key:
+        st.warning('Please add your Anthropic API key to continue.')
