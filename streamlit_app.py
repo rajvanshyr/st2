@@ -66,14 +66,14 @@ if st.button('Generate') and anthropic_api_key:
 		temperature=0,
 		system="You are a highly skilled marketing expert specializing in crafting engaging and effective Twitter posts\
 		 to help users build a strong personal brand on the platform.\"\n\"Follow these guidelines when generating\
-		  posts:\"\n\"1. Always start with a compelling hook on the first line to capture the reader's attention.\"\n\"2. \
-		  Limit posts to 280 characters or less to adhere to Twitter's character limit.\"\n\"3. Use up to 3 relevant emojis per post to add visual appeal and convey emotion, but avoid overusing them.\"\n\"4. Incorporate the topics and extra details provided in the user prompt to ensure the post is tailored to their specific \
-		  needs.\"\n“5. Maintain a consistent brand voice and tone that aligns with the user's personal brand.\"\n“6. Provide valuable insights, \
-		  tips, or entertaining content that resonates with the target audience.\"\n\"Output the generated post in JSON format with the following \
-		  keys:\"\n\"content: The full Twitter post, with the content properly escaped and formatted. \
-		  Replace newline characters with spaces.\"\n\"keywords: A list of 5-7 relevant keywords for the post to optimize for search and \
-		  discoverability.\"\n\"title: A concise and descriptive title for the post, up to 60 characters, for internal reference in the \
-		  CMS.\"\n“areasOfImprovment:The top way the post can be further improved",
+			posts:\"\n\"1. Always start with a compelling hook on the first line to capture the reader's attention.\"\n\"2. \
+			Limit posts to 280 characters or less to adhere to Twitter's character limit.\"\n\"3. Use up to 3 relevant emojis per post to add visual appeal and convey emotion, but avoid overusing them.\"\n\"4. Incorporate the topics and extra details provided in the user prompt to ensure the post is tailored to their specific \
+			needs.\"\n“5. Maintain a consistent brand voice and tone that aligns with the user's personal brand.\"\n“6. Provide valuable insights, \
+			tips, or entertaining content that resonates with the target audience.\"\n\"Output the generated post in JSON format with the following \
+			keys:\"\n\"content: The full Twitter post, with the content properly escaped and formatted. \
+			Replace newline characters with spaces.\"\n\"keywords: A list of 5-7 relevant keywords for the post to optimize for search and \
+			discoverability.\"\n\"title: A concise and descriptive title for the post, up to 60 characters, for internal reference in the \
+			CMS.\"\n“areasOfImprovment:The top way the post can be further improved",
 		messages=[
 				{
 						"role": "user",
@@ -92,19 +92,27 @@ if st.button('Generate') and anthropic_api_key:
 		)
 	ux=str(message.content)
 	st.markdown("reponse:" + str(ux))
-	ux = str(message.content)
-	st.markdown("Generated Tweet:")
-	st.info(ux)
+	# Parse the JSON response
+	try:
+		response_json = json.loads(ux)
+		tweet_content = response_json.get("content", "")
+		st.markdown("Generated Tweet:")
+		st.info(tweet_content)
 		
 		# URL-encode the tweet content
-	tweet_content = urllib.parse.quote(ux)
+		encoded_tweet = urllib.parse.quote(tweet_content)
 		
 		# Create the Twitter URL with the tweet content
-	twitter_url = f"https://twitter.com/intent/tweet?text={tweet_content}"
+		twitter_url = f"https://twitter.com/intent/tweet?text={encoded_tweet}"
 		
 		# Display a button to post the tweet
-	if st.button('Post to Twitter real'):
-			webbrowser.open_new_tab(twitter_url)
+		if st.button('Post to Twitter 17'):
+				webbrowser.open(twitter_url)
+except json.JSONDecodeError:
+		st.error("Invalid JSON response from the API.")
+	ux = str(message.content)
+
+		
 	components.html(
 		f"""
 		<title>Twitter Post</title>
