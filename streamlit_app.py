@@ -79,7 +79,7 @@ if st.button('Generate') and anthropic_api_key:
 		],
 		)
 	ux=str(message.content)
-	st.markdown("reponse:" + str(x))
+	st.markdown("reponse:" + str(ux))
 	components.html(
 		f"""
 		<title>Twitter Post</title>
