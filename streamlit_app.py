@@ -79,28 +79,28 @@ if st.button('Generate') and anthropic_api_key:
 		],
 		)
 	ux=str(message.content)
-	st.markdown("reponse:" + str(ux))
+	st.markdown("reponse:" + str(x))
 	components.html(
-			"""
+		f"""
+		<title>Twitter Post</title>
+		</head>
+		<body>
 
-	<title>Twitter Post</title>
-	</head>
-	<body>
+		<!-- Button to post to Twitter -->
+		<button id="twitterPostBtn">Post to Twitter</button>
 
-	<!-- Button to post to Twitter -->
-	<button id="twitterPostBtn">Post to Twitter</button>
-
-	<!-- Script to handle the button click and redirect to Twitter -->
-	<script>
-			document.getElementById('twitterPostBtn').addEventListener('click', function() {
-					var tweetContent = {{ux}}  ; // Content generated in the Flask app
-					var twitterUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetContent);
-					window.open(twitterUrl, '_blank');
-			});
-	</script>
-			""", height=600,
-			)
+		<!-- Script to handle the button click and redirect to Twitter -->
+		<script>
+				document.getElementById('twitterPostBtn').addEventListener('click', function() {{
+						var tweetContent = {ux};
+						var twitterUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetContent);
+						window.open(twitterUrl, '_blank');
+				}});
+		</script>
+		""",
+		height=600,
+)
 
 else:
-    if not anthropic_api_key:
-        st.warning('Please add your Anthropic API key to continue.')
+		if not anthropic_api_key:
+				st.warning('Please add your Anthropic API key to continue.')
