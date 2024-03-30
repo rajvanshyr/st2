@@ -1,2 +1,6 @@
 streamlit>=1.26.0
 anthropic
+numpy
+pandas
+altair
+urllib3
