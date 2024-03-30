@@ -108,9 +108,9 @@ if st.button('Generate') and anthropic_api_key:
 		# Display a button to post the tweet
 		if st.button('Post to Twitter 17'):
 				webbrowser.open(twitter_url)
-except json.JSONDecodeError:
+	except json.JSONDecodeError:
 		st.error("Invalid JSON response from the API.")
-	ux = str(message.content)
+	#ux = str(message.content)
 
 		
 	components.html(
