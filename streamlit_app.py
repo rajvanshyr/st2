@@ -5,6 +5,8 @@ import altair as alt
 import streamlit.components.v1 as components
 import anthropic
 import webbrowser
+import urllib.parse
+#import webbrowser
 
 # Page title
 
