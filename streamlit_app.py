@@ -4,6 +4,7 @@ import pandas as pd
 import altair as alt
 import streamlit.components.v1 as components
 import anthropic
+import webbrowser
 
 # Page title
 
@@ -80,6 +81,19 @@ if st.button('Generate') and anthropic_api_key:
 		)
 	ux=str(message.content)
 	st.markdown("reponse:" + str(ux))
+	ux = str(message.content)
+	st.markdown("Generated Tweet:")
+	st.info(ux)
+		
+		# URL-encode the tweet content
+	tweet_content = urllib.parse.quote(ux)
+		
+		# Create the Twitter URL with the tweet content
+	twitter_url = f"https://twitter.com/intent/tweet?text={tweet_content}"
+		
+		# Display a button to post the tweet
+	if st.button('Post to Twitter real'):
+			webbrowser.open_new_tab(twitter_url)
 	components.html(
 		f"""
 		<title>Twitter Post</title>
