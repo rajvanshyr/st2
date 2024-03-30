@@ -24,10 +24,9 @@ client = anthropic.Anthropic(
 	#r=message.content
 with st.expander('About this app'):
 	st.markdown('**What can this app do?**')
-	st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
+	st.info('This app shows the use of Prompting and Human augmented generation to generate tweets')
 	st.markdown('**How to use the app?**')
-	st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
-	
+	st.warning('To engage with the app, 1. Select niche of your interest in the drop-down selection box and then 2. Put in your initial tweet and any areas you wnat to improve')
 st.subheader('Which Niche do you want to appeal to?')
 
 # Load data
