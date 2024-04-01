@@ -107,7 +107,10 @@ if st.button('Generate') and anthropic_api_key:
         # Display a button to post the tweet
         if st.button('Post to Twitter'):
             st.session_state.post_clicked = True
-            webbrowser.open(twitter_url)
+            st.experimental_set_query_params(tweet_url=twitter_url)
+            js = f"window.open('{twitter_url}', '_blank');"
+            html = f'<img src onerror="{js}">'
+            components.html(html, height=0, width=0)
     except json.JSONDecodeError:
         st.error("Invalid JSON response from the API.")
 
