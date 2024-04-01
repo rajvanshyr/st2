@@ -111,6 +111,9 @@ if st.button('Generate') and anthropic_api_key:
 				webbrowser.open(twitter_url)
 	except json.JSONDecodeError:
 		st.error("Invalid JSON response from the API.")
+		tweet_url = "https://twitter.com/intent/tweet?text=testttt"
+		if st.button('Post to Twitter 18'):
+				webbrowser.open(tweet_url)
 	#ux = str(message.content)
 
 		
