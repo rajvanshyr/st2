@@ -95,8 +95,9 @@ if st.button('Generate') and anthropic_api_key:
 	st.markdown("reponse:" + str(ux))
 	# Parse the JSON response
 	try:
-		response_json = json.loads(ux)
-		tweet_content = response_json.get("content", "")
+		#response_json = json.loads(ux)
+		#tweet_content = response_json.get("content", "")
+		tweet_content=ux
 		st.markdown("Generated Tweet:")
 		st.info(tweet_content)
 		
